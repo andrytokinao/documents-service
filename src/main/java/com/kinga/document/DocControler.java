@@ -33,7 +33,11 @@ public class DocControler {
         }
     }
     @GetMapping("/create")
-    public ResponseEntity<Document> createDocument(@RequestPart("title") String title) {
+    public ResponseEntity<Document> createDocument(@RequestParam("title") String title) {
         return ResponseEntity.ok(documentService.createDocument(title));
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Document> getDocumentById(@PathVariable String id) {
+        return ResponseEntity.ok(documentService.getById(id));
     }
 }

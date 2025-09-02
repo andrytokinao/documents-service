@@ -1,0 +1,29 @@
+<div class="container">
+  <mat-card>
+    <form [formGroup]="documentForm" (ngSubmit)="createDocument()">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Titre du document</mat-label>
+        <input matInput formControlName="title" placeholder="Ex: Rapport 2025" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="isLoading || !documentForm.valid">
+        Créer
+      </button>
+    </form>
+
+  </mat-card>
+
+  <mat-card *ngIf="document">
+    <mat-card-title>Uploader un fichier pour {{ document.titre }}</mat-card-title>
+    <input type="file" (change)="onFileSelected($event)" />
+  </mat-card>
+
+  <mat-card *ngIf="uploadedFiles.length > 0">
+    <mat-card-title>Fichiers associés</mat-card-title>
+    <mat-list>
+      <mat-list-item *ngFor="let file of uploadedFiles">
+        {{ file.fileName }} ({{ file.path }})
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>

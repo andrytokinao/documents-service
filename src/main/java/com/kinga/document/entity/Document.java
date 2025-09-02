@@ -11,7 +11,6 @@ import java.util.List;
 @Data
 public class Document {
     @Id
-    @GeneratedValue
     private String id;
     private String titre;
     private LocalDateTime dateCreation;

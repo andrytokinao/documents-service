@@ -1,0 +1,23 @@
+<div class="doc-details" *ngIf="!isLoading && document; else loadingTpl">
+  <mat-card class="a4">
+    <h1>{{ document.titre }}</h1>
+    <div class="description" [innerHTML]="document.description"></div>
+  </mat-card>
+
+  <mat-card class="files">
+    <h2>Fichiers associés</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let file of document.fichiers" (click)="openFile(file)">
+        <mat-icon matListIcon>insert_drive_file</mat-icon>
+        <div matLine>{{ file.fileName }}</div>
+        <div matLine class="path">{{ file.path }}</div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card>
+</div>
+
+<ng-template #loadingTpl >
+  <div class="loading" *ngIf="isLoading">
+    <mat-spinner></mat-spinner>
+  </div>
+</ng-template>

@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -29,6 +30,7 @@ public class DocumentService {
 
     public Document createDocument(String  title) {
         Document doc = new Document();
+        doc.setTitre(title);
         String uuid = UUID.randomUUID().toString();
         doc.setId(uuid);
         String path = baseDir + File.pathSeparator + uuid;
@@ -72,5 +74,9 @@ public class DocumentService {
 
         Path path = Paths.get(fichier.getFilePath());
         return new UrlResource(path.toUri());
+    }
+
+    public Document getById(String id) {
+        return documentRepo.findById(id).orElse(null);
     }
 }
