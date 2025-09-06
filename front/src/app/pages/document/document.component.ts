@@ -48,7 +48,7 @@ export class DocumentComponent {
       next: (doc) => {
         this.document = doc;
         this.isLoading = false;
-        this.router.navigate(['document',doc.id]);
+        this.router.navigate(['',doc.id]);
       },
       error: () => (this.isLoading = false)
     });

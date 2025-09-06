@@ -16,6 +16,8 @@
             "outputPath": "dist/front",
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "baseHref": "/documents/",
+            "deployUrl": "/documents/",
             "polyfills": [
               "zone.js"
             ],

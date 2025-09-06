@@ -12,8 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
       <span>Gestion de Documents</span>
       <span class="spacer"></span>
       <button mat-button routerLink="/">Accueil</button>
-      <button mat-button routerLink="/documents">Liste</button>
-      <button mat-button routerLink="/document/new">Nouveau</button>
+      <button mat-button routerLink="/list">Liste</button>
+      <button mat-button routerLink="/new">Nouveau</button>
     </mat-toolbar>
 
     <router-outlet></router-outlet>

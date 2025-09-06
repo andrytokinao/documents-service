@@ -7,8 +7,8 @@ import {DocumentDetailsComponent} from './pages/document-details/document-detail
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'documents', component: DocumentListComponent },
-  { path: 'document/new', component: DocumentComponent },
-  { path: 'document/:id', component: DocumentDetailsComponent },
+  { path: 'list', component: DocumentListComponent },
+  { path: 'new', component: DocumentComponent },
+  { path: ':id', component: DocumentDetailsComponent },
   { path: '**', redirectTo: '' }
 ];
