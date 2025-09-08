@@ -3,7 +3,10 @@
     <h1>{{ document.titre }}</h1>
     <div class="description" [innerHTML]="document.description"></div>
   </mat-card>
-
+  <div class="mb-3">
+    <label  class="form-label">Description</label>
+    <app-quill-editor  [(content)]="description" [theme]="'snow'"></app-quill-editor>
+  </div>
   <mat-card class="files">
     <h2>Fichiers associés</h2>
     <mat-list>

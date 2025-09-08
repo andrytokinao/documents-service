@@ -7,17 +7,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {DocumentApp, DocumentService, Fichier} from '../../services/document.service';
 import {MatLine} from '@angular/material/grid-list';
+import {EditorComponent} from '../../comon/quill-editor/quill-editor.component';
 
 @Component({
   selector: 'app-document-details',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatListModule, MatIconModule, MatProgressSpinnerModule, MatLine],
+  imports: [CommonModule, MatCardModule, MatListModule, MatIconModule, MatProgressSpinnerModule, MatLine, EditorComponent],
   templateUrl: './document-details.component.html',
   styleUrls: ['./document-details.component.css']
 })
 export class DocumentDetailsComponent implements OnInit {
   document?: DocumentApp;
   isLoading = true;
+  description: String = 'zazazaza';
 
   constructor(private route: ActivatedRoute, private documentService: DocumentService) {}
 

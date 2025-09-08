@@ -8,7 +8,10 @@
 
 .a4 {
   width: 100%;
+  /*
   min-height: 842px;
+  */
+  min-height: 200px;
   padding: 40px;
   background: white;
   box-shadow: 0 0 10px rgba(0,0,0,0.15);
