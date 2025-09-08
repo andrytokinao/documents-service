@@ -125,8 +125,8 @@
     <distributionManagement>
         <repository>
             <id>github</id>
-            <name>GitHub OWNER Repository</name>
-            <url>https://maven.pkg.github.com/andrytokinao/${project.artifactId}</url>
+            <name>GitHub andrytokinao documents-service</name>
+            <url>https://maven.pkg.github.com/andrytokinao/documents-service</url>
         </repository>
     </distributionManagement>
     <profiles>
