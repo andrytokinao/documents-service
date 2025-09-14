@@ -1,15 +1,23 @@
 package com.kinga.document.services;
 
+import com.kinga.document.dto.DocumentDto;
 import com.kinga.document.entity.Document;
 import com.kinga.document.entity.Fichier;
+import com.kinga.utils.KingaUtils;
+import org.apache.tomcat.util.http.fileupload.util.mime.MimeUtility;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -79,8 +87,23 @@ public class DocumentService {
         return new UrlResource(path.toUri());
     }
 
-    public Document getById(String id) {
-        return documentRepo.findById(id).orElse(null);
+    public DocumentDto getById(String id) {
+        Document d = documentRepo.findById(id).orElse(null);
+        if (d == null) {
+            return null;
+        }
+        return new DocumentDto(d);
+    }
+
+
+    public ResponseEntity<Resource> downloadFile(String filePath) throws MalformedURLException {
+
+        Path zipFilePath = Paths.get(KingaUtils.decodeText(filePath));
+        Resource singleResource = new UrlResource(zipFilePath.toUri());
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_OCTET_STREAM)
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + singleResource.getFilename() + "\"")
+                .body(singleResource);
     }
 
 

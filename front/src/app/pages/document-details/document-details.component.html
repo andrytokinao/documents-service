@@ -11,9 +11,10 @@
     <h2>Fichiers associés</h2>
     <mat-list>
       <mat-list-item *ngFor="let file of document.fichiers" (click)="openFile(file)">
+        <a [href]="downloadUrl(file)">
         <mat-icon matListIcon>insert_drive_file</mat-icon>
         <div matLine>{{ file.fileName }}</div>
-        <div matLine class="path">{{ file.path }}</div>
+        </a>
       </mat-list-item>
     </mat-list>
   </mat-card>

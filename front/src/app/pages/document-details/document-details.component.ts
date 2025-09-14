@@ -10,6 +10,7 @@ import {EditorComponent} from '../../comon/quill-editor/quill-editor.component';
 import {HttpClient, HttpEvent} from '@angular/common/http';
 import {DocumentService} from '../../services/document.service';
 import {DocumentApp, Fichier, Uploading} from '../../models';
+import {environment} from '../../../env/environments';
 
 @Component({
   selector: 'app-document-details',
@@ -80,4 +81,7 @@ export class DocumentDetailsComponent implements OnInit {
     })
   }
 
+  downloadUrl(file: Fichier) {
+    return environment.DOCUMENT_SERVICE_API+"download/"+file.filePath	;
+  }
 }

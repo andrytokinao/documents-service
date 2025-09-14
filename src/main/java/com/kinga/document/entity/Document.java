@@ -1,5 +1,6 @@
 package com.kinga.document.entity;
 
+import com.kinga.utils.KingaUtils;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -27,14 +28,7 @@ public class Document {
 
     @OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Fichier> fichiers = new ArrayList<>();
-    public List<Fichier> getFichiers() {
-        if (fichiers == null) {
-            return null;
-        }
-        return this.fichiers.stream()
-                .peek(hi -> hi.setDocument(null))
-                .collect(Collectors.toList());
-    }
+
 
 
 

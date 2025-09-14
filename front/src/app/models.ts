@@ -8,6 +8,7 @@ export interface Uploading {
 export interface Fichier {
   fileName: string;
   path: string;
+  filePath:String;
 }
 
 export interface DocumentApp {
