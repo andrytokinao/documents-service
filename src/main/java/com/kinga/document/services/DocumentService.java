@@ -64,8 +64,6 @@ public class DocumentService {
         f.setFilePath(filePath.toString());
         f.setDocument(doc);
 
-        doc.getFichiers().add(f);
-        documentRepo.save(doc);
 
         return fichierRepo.save(f);
     }

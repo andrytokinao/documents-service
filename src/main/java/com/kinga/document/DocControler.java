@@ -2,6 +2,7 @@ package com.kinga.document;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kinga.document.dto.DocumentDto;
+import com.kinga.document.dto.FichierDto;
 import com.kinga.document.entity.Document;
 import com.kinga.document.entity.Fichier;
 import com.kinga.document.services.DocumentService;
@@ -33,7 +34,7 @@ public class DocControler {
         try{
             Fichier fichier = documentService.uploadFile(file, documentId);
             ObjectMapper  mapper = new ObjectMapper();
-            return ResponseEntity.ok().body(mapper.writeValueAsString(fichier));
+            return ResponseEntity.ok().body(mapper.writeValueAsString(new FichierDto(fichier)));
 
         } catch (Exception ex){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Une erreur s'est produite lors du téléchargement du fichier."+ex.getMessage());
