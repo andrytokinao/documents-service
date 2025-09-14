@@ -10,6 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+
 @Controller
 @RequestMapping("/api")
 @RequiredArgsConstructor
@@ -33,11 +36,12 @@ public class DocControler {
         }
     }
     @GetMapping("/create")
-    public ResponseEntity<Document> createDocument(@RequestParam("title") String title) {
+    public ResponseEntity<Document> createDocument(@RequestParam("title") String title) throws IOException {
         return ResponseEntity.ok(documentService.createDocument(title));
     }
     @GetMapping("/{id}")
     public ResponseEntity<Document> getDocumentById(@PathVariable String id) {
         return ResponseEntity.ok(documentService.getById(id));
     }
+
 }

@@ -18,7 +18,28 @@
     </mat-list>
   </mat-card>
 </div>
+<div>
+  <ul *ngIf="filesToUploads">
+    <div *ngFor="let up of uploadings; let i = index" class="file" [ngClass]="up.status">
+      <label class="file" > <i class="fa fa-file-text"> </i>
+        {{ up.file.name}}
+      </label>
+      <span (click)="removeFile(i)" style="float: right;"> {{ up.status }} <i class="fa fa-remove"></i></span>
+    </div>
+  </ul>
+  <div *ngIf="filesToUploads">
+   <button (click)="uploadFils()"> Téléverser   </button>
 
+  </div>
+</div>
+<div
+  (click)="fileInput.click()"
+  class="file-drop-zone">
+  <input type="file" multiple (change)="onFileSelected($event)" hidden #fileInput>
+  <p>Glissez-déposez vos fichiers ou cliquez pour les sélectionner</p>
+</div>
+
+<div>
 <ng-template #loadingTpl >
   <div class="loading" *ngIf="isLoading">
     <mat-spinner></mat-spinner>

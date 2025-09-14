@@ -6,6 +6,7 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Data
@@ -26,6 +27,15 @@ public class Document {
 
     @OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Fichier> fichiers = new ArrayList<>();
+    public List<Fichier> getFichiers() {
+        if (fichiers == null) {
+            return null;
+        }
+        return this.fichiers.stream()
+                .peek(hi -> hi.setDocument(null))
+                .collect(Collectors.toList());
+    }
+
 
 
 }
