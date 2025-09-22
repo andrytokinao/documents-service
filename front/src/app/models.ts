@@ -13,7 +13,7 @@ export interface Fichier {
 
 export interface DocumentApp {
   id: string;
-  titre: string;
+  title: string;
   description?: string;
   fichiers: Fichier[];
 }

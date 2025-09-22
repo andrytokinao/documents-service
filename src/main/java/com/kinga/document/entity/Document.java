@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 public class Document {
     @Id
     private String id;
-    private String titre;
+    private String title;
     private LocalDateTime dateCreation;
     private LocalDateTime dateModification;
     private String description;

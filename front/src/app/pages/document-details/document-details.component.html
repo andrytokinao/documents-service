@@ -1,6 +1,6 @@
 <div class="doc-details" *ngIf="!isLoading && document; else loadingTpl">
   <mat-card class="a4">
-    <h1>{{ document.titre }}</h1>
+    <h1>{{ document.title }}</h1>
     <div class="description" [innerHTML]="document.description"></div>
   </mat-card>
   <div class="mb-3">

@@ -14,7 +14,7 @@
   </mat-card>
 
   <mat-card *ngIf="document">
-    <mat-card-title>Uploader un fichier pour {{ document.titre }}</mat-card-title>
+    <mat-card-title>Uploader un fichier pour {{ document.title }}</mat-card-title>
     <input type="file" (change)="onFileSelected($event)" />
   </mat-card>
 

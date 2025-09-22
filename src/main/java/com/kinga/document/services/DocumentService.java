@@ -25,7 +25,9 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.rmi.RemoteException;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class DocumentService {
@@ -42,7 +44,7 @@ public class DocumentService {
 
     public Document createDocument(String  title) throws IOException {
         Document doc = new Document();
-        doc.setTitre(title);
+        doc.setTitle(title);
         String uuid = UUID.randomUUID().toString();
         Path path = Paths.get(baseDir, uuid);
         Files.createDirectories(path);
@@ -92,7 +94,9 @@ public class DocumentService {
         }
         return new DocumentDto(d);
     }
-
+    public List<DocumentDto> findAllById(Set<String> ids) {
+        return documentRepo.findAllById(ids).stream().map(DocumentDto::new).collect(Collectors.toList());
+    }
 
     public ResponseEntity<Resource> downloadFile(String filePath) throws MalformedURLException {
 

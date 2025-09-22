@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/api")
@@ -47,6 +48,10 @@ public class DocControler {
     @GetMapping("/{id}")
     public ResponseEntity<DocumentDto> getDocumentById(@PathVariable String id) {
         return ResponseEntity.ok(documentService.getById(id));
+    }
+    @GetMapping("/allById")
+    public ResponseEntity<List<DocumentDto>> getDocumentById(@RequestParam Set<String> ids) {
+        return ResponseEntity.ok(documentService.findAllById(ids));
     }
     @GetMapping("/download/{file}")
     @ResponseBody

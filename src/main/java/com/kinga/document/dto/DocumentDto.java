@@ -14,13 +14,13 @@ import java.util.stream.Collectors;
 @Data
 public class DocumentDto {
     private String id;
-    private String titre;
+    private String title;
 
     private String description;
     private List<Fichier> fichiers = new ArrayList<>();
     public DocumentDto(Document document) {
         this.id = document.getId();
-        this.titre = document.getTitre();
+        this.title = document.getTitle();
         this.description = document.getDescription();
         this.setFichiers(document.getFichiers());
     }
