@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Controller
@@ -43,6 +44,11 @@ public class DocControler {
     }
     @GetMapping("/create")
     public ResponseEntity<Document> createDocument(@RequestParam("title") String title) throws IOException {
+        return ResponseEntity.ok(documentService.createDocument(title));
+    }
+    @PostMapping("/create")
+    public ResponseEntity<Document> createDocument(@RequestBody Map<String, String> payload) throws IOException {
+        String title = payload.get("title");
         return ResponseEntity.ok(documentService.createDocument(title));
     }
     @GetMapping("/{id}")
