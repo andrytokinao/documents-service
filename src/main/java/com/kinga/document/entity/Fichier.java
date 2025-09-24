@@ -1,5 +1,6 @@
 package com.kinga.document.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.Entity;
@@ -19,6 +20,7 @@ public class Fichier {
     private String filePath;
 
     @ManyToOne
+    @JsonIgnore
     private Document document;
 
     public String toJson() throws JsonProcessingException {

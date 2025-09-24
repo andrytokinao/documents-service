@@ -57,7 +57,7 @@ public class DocControler {
     }
     @GetMapping("/allById")
     public ResponseEntity<List<DocumentDto>> getDocumentById(@RequestParam Set<String> ids) {
-        return ResponseEntity.ok(documentService.findAllById(ids));
+            return ResponseEntity.ok(documentService.findAllById(ids));
     }
     @GetMapping("/download/{file}")
     @ResponseBody
