@@ -75,9 +75,8 @@ export class DocumentDetailsComponent implements OnInit {
     if (this.document)
       documentId = this.document.id;
     this.documentService.uploadDocument(this.uploadings,documentId ).subscribe( complerte => {
-      alert(true);
     }, error => {
-      alert(JSON.stringify(error));
+      console.error(error);
     })
   }
 
