@@ -39,6 +39,7 @@ public class DocControler {
             return ResponseEntity.ok().body(mapper.writeValueAsString(new FichierDto(fichier)));
 
         } catch (Exception ex){
+            ex.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Une erreur s'est produite lors du téléchargement du fichier."+ex.getMessage());
         }
     }
