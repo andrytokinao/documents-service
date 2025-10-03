@@ -53,7 +53,7 @@ public class DocumentService {
         return documentRepo.save(doc);
     }
 
-    public Fichier uploadFile(MultipartFile file,String documentId) throws IOException {
+    public Fichier uploadFile(MultipartFile file, String documentId) throws IOException {
         Document doc = documentRepo.findById(documentId)
                 .orElseThrow(() -> new RuntimeException("Document non trouvé"));
 
@@ -66,9 +66,19 @@ public class DocumentService {
         f.setFilePath(filePath.toString());
         f.setDocument(doc);
 
+        // Ajout de la taille du fichier (en octets)
+        f.setSize(file.getSize());
+
+        String fileType = "";
+        String originalName = file.getOriginalFilename();
+        if (originalName != null && originalName.contains(".")) {
+            fileType = originalName.substring(originalName.lastIndexOf(".") + 1);
+        }
+        f.setFileType(fileType);
 
         return fichierRepo.save(f);
     }
+
 
     public List<Fichier> listFiles(String documentId) {
         Document doc = documentRepo.findById(documentId)
