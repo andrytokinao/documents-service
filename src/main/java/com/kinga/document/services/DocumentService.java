@@ -69,12 +69,12 @@ public class DocumentService {
         // Ajout de la taille du fichier (en octets)
         f.setSize(file.getSize());
 
-        String fileType = "";
+        String contentType = "";
         String originalName = file.getOriginalFilename();
         if (originalName != null && originalName.contains(".")) {
-            fileType = originalName.substring(originalName.lastIndexOf(".") + 1);
+            contentType = originalName.substring(originalName.lastIndexOf(".") + 1);
         }
-        f.setFileType(fileType);
+        f.setContentType(contentType);
 
         return fichierRepo.save(f);
     }

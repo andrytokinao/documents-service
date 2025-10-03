@@ -9,12 +9,12 @@ public class FichierDto {
     private String fileName;
     private String filePath;
     private long size;
-    private String fileType;
+    private String contentType;
     public FichierDto(Fichier fichier) {
         this.id = fichier.getId();
         this.fileName = fichier.getFileName();
         this.filePath = fichier.getFilePath();
         this.size = fichier.getSize();
-        this.fileType = fichier.getFileType();
+        this.contentType = fichier.getContentType();
     }
 }
