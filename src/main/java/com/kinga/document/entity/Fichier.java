@@ -19,7 +19,7 @@ public class Fichier {
     private String fileName;
     private String filePath;
     private long size;
-    private String fileType;
+    private String contentType;
 
 
     @ManyToOne
