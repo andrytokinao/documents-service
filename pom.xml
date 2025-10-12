@@ -126,7 +126,7 @@
         <repository>
             <id>github</id>
             <name>GitHub andrytokinao documents-service</name>
-            <url>https://maven.pkg.github.com/andrytokinao/documents-service</url>
+            <url>https://maven.pkg.github.com/andrytokinao/${project.artifactId}</url>
         </repository>
     </distributionManagement>
     <profiles>
